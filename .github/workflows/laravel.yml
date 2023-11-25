@@ -40,7 +40,7 @@ jobs:
       run: php artisan test --parallel
       
     - name: Execute Larastan
-      run: vender/bin/phpstan analyse
+      run: vendor/bin/phpstan analyse
       
     - name: Execute Laravel Pint
       run: vendor/bin/pint --test
