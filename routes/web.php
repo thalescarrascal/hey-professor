@@ -7,6 +7,8 @@ Route::get('/', function () {
     if (app()->isLocal()) {
         auth()->loginUsingId(id: 1);
 
+        return to_route('dashboard');
+
     }
 
     return view('welcome');
