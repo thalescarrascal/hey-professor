@@ -18,6 +18,6 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-        Question::factory()->count(count: 10)->create();
+        Question::factory()->count(count: 100)->create();
     }
 }
