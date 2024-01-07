@@ -14,6 +14,7 @@ return new class () extends Migration {
             $table->id();
             $table->text(column: 'question');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
