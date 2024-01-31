@@ -16,15 +16,20 @@ Route::get('/', function () {
 
 Route::get('/dashboard', DashboardController::class)->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::post(uri: '/question/store', action: [QuestionController::class, 'store'])->name('question.store');
-Route::post(uri: '/question/like/{question}', action: Question\LikeController::class)->name(name: 'question.like');
-Route::post(uri: '/question/unlike/{question}', action: Question\UnlikeController::class)->name(name: 'question.unlike');
-Route::put(uri: '/question/publish/{question}', action: Question\PublishController::class)->name(name: 'question.publish');
-
 Route::middleware('auth')->group(function () {
+    #region Question Controllers
+
+    Route::post(uri: '/question/store', action: [QuestionController::class, 'store'])->name('question.store');
+    Route::post(uri: '/question/like/{question}', action: Question\LikeController::class)->name(name: 'question.like');
+    Route::post(uri: '/question/unlike/{question}', action: Question\UnlikeController::class)->name(name: 'question.unlike');
+    Route::put(uri: '/question/publish/{question}', action: Question\PublishController::class)->name(name: 'question.publish');
+    # endregion
+
+    #region Profile Routes
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    # endregion
 });
 
 require __DIR__ . '/auth.php';
